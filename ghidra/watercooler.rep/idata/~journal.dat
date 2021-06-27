@@ -1,0 +1,6 @@
+IDEL:/code.bin
+IADD:00000002:/code.bin
+IDSET:/code.bin:7f011b50518094799894359
+IADD:00000003:/eeprom.bin
+IDSET:/eeprom.bin:7f011a60918141542864268
+IDEL:/eeprom.bin
