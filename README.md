@@ -7,16 +7,16 @@ The microcontroller is a PIC18F6527
 ### DIP switches
 The switches connect the signal to GND when on. When off, the signals are pulled up.
 
-| DIP PIN | PIC PIN |
-|---------|---------|
-| 1 | RG0 |
-| 2 | RG1 |
-| 3 | RG2 |
-| 4 | RG3 |
-| 5 | RF7 |
-| 6 | RG4 |
-| 7 | RF6 |
-| 8 | RF5 |
+| DIP PIN | PIC PIN | BIT |
+|---------|---------|-----|
+| 1 | RG0 | 0 |
+| 2 | RG1 | 1 |
+| 3 | RG2 | 2 |
+| 4 | RG3 | 3 |
+| 5 | RF7 | 7 |
+| 6 | RG4 | 4 |
+| 7 | RF6 | 6 |
+| 8 | RF5 | 5 |
 
 ### Valves
 | Valve | PIC PIN |

@@ -1,5 +1,6 @@
-IADD:00000000:/dump.bin
-IDSET:/dump.bin:7f01197b316053508135789
-IDEL:/dump.bin
-IADD:00000001:/code.bin
-IDSET:/code.bin:7f0119c2d17743339804060
+IDEL:/code.bin
+IADD:00000002:/code.bin
+IDSET:/code.bin:7f011b50518094799894359
+IADD:00000003:/eeprom.bin
+IDSET:/eeprom.bin:7f011a60918141542864268
+IDEL:/eeprom.bin
