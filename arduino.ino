@@ -49,6 +49,7 @@ void loop(){
           //Serial.println("Device ID is OK!");
           //Serial.println("Trying to read data...");
 
+          // Dump code
           setAddress(0);
           char tmp[2];
           for(uint32_t i=0; i<0xC000; i++){
@@ -56,6 +57,22 @@ void loop(){
             Serial.print(tmp);
           }
           Serial.println();
+
+          // Dump EEPROM
+          for(uint32_t i=0; i<0x400; i++){
+            sprintf(tmp, "%.2x", readEeprom(i));
+            Serial.print(tmp);
+          }
+          Serial.println();
+
+          // Dump config
+          setAddress(0x300001);
+          for(uint32_t i=0; i<12; i++){
+            sprintf(tmp, "%.2x", readPostIncrement());
+            Serial.print(tmp);
+          }
+          Serial.println();
+
           break;
 
         } else {
@@ -158,6 +175,22 @@ void setAddress(uint32_t addr) {
   sendCore(0x6EF7);
   sendCore(0x0E00 | ((addr >> 0) & 0xFF));
   sendCore(0x6EF6);
+}
+
+uint8_t readEeprom(uint16_t addr){
+  sendCore(0x9EA6);
+  sendCore(0x9CA6);
+  sendCore(0x0E00 | ((addr >> 0) & 0xFF));
+  sendCore(0x6EA9);
+  sendCore(0x0E00 | ((addr >> 8) & 0xFF));
+  sendCore(0x6EAA);
+  sendCore(0x80A6);
+  sendCore(0x50A8);
+  sendCore(0x6EF5);
+  sendCore(0x0000);
+
+  sendCommand(CMD_SHIFT_OUT_TABLAT);
+  return readByte();
 }
 
 uint8_t readByte(){
