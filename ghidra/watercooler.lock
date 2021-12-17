@@ -1,9 +1,9 @@
 #Ghidra Lock File
-#Sun Jun 27 15:08:55 CEST 2021
+#Sat Dec 18 00:06:36 CET 2021
 OS\ Name=Linux
-OS\ Version=5.8.0-59-generic
+OS\ Version=5.15.7-051507-generic
 Username=robbe
-Hostname=robbe-xps
+Hostname=robbe-desktop
 <META>\ Supports\ File\ Channel\ Locking=Channel Lock
 OS\ Architecture=amd64
-Timestamp=6/27/21, 3\:08 PM
+Timestamp=12/18/21, 12\:06 AM
