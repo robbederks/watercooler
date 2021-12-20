@@ -22,9 +22,9 @@ The switches connect the signal to GND when on. When off, the signals are pulled
 | Valve | PIC PIN |
 |-------|---------|
 | Inlet | RD0 |
-| B | RD1 |
-| C | RD2 |
-| D | RD3 |
+| B (hot) | RD1 |
+| C (cold) | RD2 |
+| D (room temp) | RD3 |
 | Fill | RD4 |
 
 ### Other
@@ -35,3 +35,16 @@ The switches connect the signal to GND when on. When off, the signals are pulled
 | Heater | RE2 |
 | Mixer | RE3 |
 | Fan | RE0 |
+
+## Reverse engineering notes
+### `state_flags`
+| Bit | Set mask | Clear mask | Description |
+|-----|----------|------------|-------------|
+| 0 | 0x01 | 0xfe | (Re-)booted without power-on reset |
+| 1 | 0x02 | 0xfd | (Re-)booted without watchdog trigger |
+| 2 | 0x04 | 0xfb | used but unknown purpose (wrote something to EEPROM) |
+| 3 | 0x08 | 0xf7 | Water too hot |
+| 4 | 0x10 | 0xef | Fan and compressor running |
+| 5 | 0x20 | 0xdf | used but unknown purpose |
+| 6 | 0x40 | 0xbf | Dispensing something |
+| 7 | 0x80 | 0x7f | Handle compressor interrupt|
