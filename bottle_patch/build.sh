@@ -9,5 +9,10 @@ mkdir -p $OUT_DIR
 
 rm -r $OUT_DIR/*
 
-$TOOL-cc -mcpu=pic18f6527 -opt=none -o out/hook hook.c
+$TOOL-cc \
+    -mcpu=pic18f6527 \
+    -opt=none \
+    -mram=default,-0000-0100 \
+    -o out/hook \
+    hook.c
 

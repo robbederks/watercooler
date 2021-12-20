@@ -1,9 +1,2 @@
-IDEL:/hook.hex
-IADD:0000000c:/hook.hex
-IDSET:/hook.hex:7f0119e8f179747247716539
-IDEL:/hook.hex
-IADD:0000000d:/hook.hex
-IDSET:/hook.hex:7f0118133179905216610278
-IDEL:/hook.hex
-IADD:0000000e:/hook.hex
-IDSET:/hook.hex:7f0119f25180200908746185
+IADD:00000016:/patched_code.bin
+IDSET:/patched_code.bin:7f011b263239542100928875
