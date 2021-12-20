@@ -1,6 +1,9 @@
-IDEL:/code.bin
-IADD:00000002:/code.bin
-IDSET:/code.bin:7f011b50518094799894359
-IADD:00000003:/eeprom.bin
-IDSET:/eeprom.bin:7f011a60918141542864268
-IDEL:/eeprom.bin
+IDEL:/hook.hex
+IADD:0000000c:/hook.hex
+IDSET:/hook.hex:7f0119e8f179747247716539
+IDEL:/hook.hex
+IADD:0000000d:/hook.hex
+IDSET:/hook.hex:7f0118133179905216610278
+IDEL:/hook.hex
+IADD:0000000e:/hook.hex
+IDSET:/hook.hex:7f0119f25180200908746185
