@@ -1,0 +1,3 @@
+IDEL:/hook.hex
+IADD:00000020:/hook.hex
+IDSET:/hook.hex:7f0118fa9322211218497463
