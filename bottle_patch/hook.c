@@ -18,7 +18,7 @@ extern void read_port_b_e(void) __at(0x67d2);
 extern void beep(void) __at(0x7118);
 
 // Globals
-uint16_t fake_dispensing_counter;
+uint32_t fake_dispensing_counter;
 uint8_t handsfree;
 
 #define INIT_MAGIC 0xA5A5
@@ -43,8 +43,9 @@ void patch() {
   read_port_b_e();
 
   if (fake_dispensing_counter == 0 && ((*return_val_ptr) & 0x3) == 0x3) {
-    // Pressing both buttons, so we start the fake dispense and beep
-    fake_dispensing_counter = 0xf000;
+    // Pressing both buttons, so we start the fake dispense and beep.
+    // This will dispense about 1L
+    fake_dispensing_counter = 0x20000;
     handsfree = 0U;
 
     *beep_time_L_ptr = (uint8_t) 0x05;

@@ -1,9 +1,3 @@
 IDEL:/hook.hex
-IADD:0000001d:/hook.hex
-IDSET:/hook.hex:7f011aaf3321115946737500
-IDEL:/hook.hex
-IADD:0000001e:/hook.hex
-IDSET:/hook.hex:7f01184a1321520946712046
-IDEL:/hook.hex
-IADD:0000001f:/hook.hex
-IDSET:/hook.hex:7f011a8bf321571607788224
+IADD:00000020:/hook.hex
+IDSET:/hook.hex:7f0118fa9322211218497463
