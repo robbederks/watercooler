@@ -14,9 +14,12 @@ volatile uint8_t *return_val_ptr = (volatile uint8_t *)0x0000;
 volatile uint8_t *state_flags_ptr = (volatile uint8_t *)0x0011;
 volatile uint8_t *input_arg_L_ptr = (volatile uint8_t *)0x00c0;
 volatile uint8_t *input_arg_H_ptr = (volatile uint8_t *)0x00c1;
+volatile uint8_t *beep_time_L_ptr = (volatile uint8_t *)0x00be;
+volatile uint8_t *beep_time_H_ptr = (volatile uint8_t *)0x00bf;
 
 extern void delay(void) __at(0x75c8);
 extern void read_port_b_e(void) __at(0x67d2);
+extern void beep(void) __at(0x7118);
 
 #define RETURN_VAL_HOOKED 1U
 #define RETURN_VAL_REGULAR 0U
@@ -25,27 +28,32 @@ extern void read_port_b_e(void) __at(0x67d2);
 // to make it easy to find in the binary
 uint8_t patch() __at(0x8000);
 uint8_t patch() {
-  // Are we dispensing something already?
-  if (*state_flags_ptr & (1 << 6)) {
+  // Are we dispensing cold water already?
+  read_port_b_e();
+  if (((*return_val_ptr) & 0x2) != 0) {
     uint8_t handsfree = 0;
 
-    // Yes -> start the delay!
+    // Yes -> short beep and start the delay!
+    *beep_time_L_ptr = (uint8_t) 0x05;
+    *beep_time_H_ptr = (uint8_t) 0x01;
+    beep();
+
     for (uint8_t i=0; i<100; i++) {
-      *input_arg_L_ptr = (uint8_t) 0x100;
+      *input_arg_L_ptr = (uint8_t) 0xff;
       *input_arg_H_ptr = (uint8_t) 0x0;
       delay();
 
       // Check that we didn't press a button
       read_port_b_e();
-      uint8_t button_pressed = (((*return_val_ptr) & 0x7) != 0);
-      if (!handsfree) {
+      uint8_t button_pressed = ((*return_val_ptr) & 0x3);
+      if (handsfree == 0) {
         // We're still waiting on a button release
-        if (!button_pressed) {
+        if (button_pressed == 0) {
           handsfree = 1;
         }
       } else {
         // Buttons have been released
-        if (button_pressed) {
+        if (button_pressed != 0) {
           // We pressed a button again: cancel!
           break;
         }

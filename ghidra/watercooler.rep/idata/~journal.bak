@@ -1,2 +1,3 @@
-IADD:00000016:/patched_code.bin
-IDSET:/patched_code.bin:7f011b263239542100928875
+IDEL:/hook.hex
+IADD:00000019:/hook.hex
+IDSET:/hook.hex:7f0118343260869964269285
